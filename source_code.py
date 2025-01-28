@@ -19,7 +19,11 @@ def number_guessing_game():
     print("Guess a number between 1 and 100.")
 
     while attempts < max_attempts:
-        guess = int(input("Enter your guess: "))
+        try:
+            guess = int(input("Enter your guess: "))
+        except:
+            print("Invalid input format! Give digits(0-9) only!!")
+            return None
         attempts += 1
 
         if guess < number:
@@ -48,9 +52,13 @@ def calculator():
     print("Operations: +, -, *, /")
 
     while True:
-        num1 = float(input("Enter the first number: "))
-        operator = input("Enter the operator: ")
-        num2 = float(input("Enter the second number: "))
+        try:
+            num1 = float(input("Enter the first number: "))
+            operator = input("Enter the operator: ")
+            num2 = float(input("Enter the second number: "))
+        except:
+            print("Invalid input format! Give digits(0-9) only!!")
+            return
 
         if operator == '+':
             print(f"Result: {num1 + num2}")
@@ -173,14 +181,22 @@ def atm_simulation():
         if choice == '1':
             print(f"Your balance is: {balance}")
         elif choice == '2':
-            amount = float(input("Enter the amount to deposit: "))
+            try:
+                amount = float(input("Enter the amount to deposit: "))
+            except:
+                print("Invalid input format! Give digits(0-9) only!!")
+                return None
             if amount > 0:
                 balance += amount
                 print(f"Deposited {amount}. New balance is {balance}.")
             else:
                 print("Invalid amount.")
         elif choice == '3':
-            amount = float(input("Enter the amount to withdraw: "))
+            try:
+                amount = float(input("Enter the amount to withdraw: "))
+            except:
+                print("Invalid input format! Give digits(0-9) only!!")
+                return None
             if 0 < amount <= balance:
                 balance -= amount
                 print(f"Withdrew {amount}. Remaining balance is {balance}.")
@@ -195,5 +211,3 @@ def atm_simulation():
 atm_simulation()
 
 
-
-changes done
